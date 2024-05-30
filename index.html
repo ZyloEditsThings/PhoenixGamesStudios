@@ -1,13 +1,97 @@
+<!DOCTYPE html>
 <html>
-<head></head>
+<head>
+    <style>
+        /* CSS for tabs */
+        .tab {
+            overflow: hidden;
+            background-color: #f0f0f0; /* Changed from #333 to match the page background */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: lightblue; /* Changed from dark blue to light blue */
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            transition: 0.3s;
+            color: white;
+            font-size: 17px;
+            margin-right: 5px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: purple;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border-radius: 0 10px 10px 10px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
 <body style="background-color: #f0f0f0;">
+
+<!-- Tab links -->
+<div class="tab">
+    <button onclick="openTab('Home')">Home</button>
+    <button onclick="openTab('Help')">Help</button>
+    <button onclick="openTab('Address')">Address</button>
+    <button onclick="openTab('FindIssues')">Find Issues</button>
+    <button onclick="openTab('Download')">Download</button>
+</div>
+
+<!-- Tab content -->
+<div id="Home" class="tabcontent" style="display: block;">
     <h1>This website is made by Phoenix Games.</h1>
     <h2>About this website</h2>
     <p>This website will be updated frequently and will have new updates from Phoenix Games</p>
     <h2>What I'm working on</h2>
-    <p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgIBwcHCAgIBwcHBw0HBwcHBw8IDQcNFREWFhURExMYHSggGCYxJxUfITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKys3KzcrNy0rKysrLTcrLSsrKy0rKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAOEA4QMBIgACEQEDEQH/xAAaAAADAQEBAQAAAAAAAAAAAAAAAQIDBAUH/8QAGxABAQEBAQEBAQAAAAAAAAAAAAEREwIDEmH/xAAYAQEBAQEBAAAAAAAAAAAAAAABAAIGBf/EABgRAQEBAQEAAAAAAAAAAAAAAAARARIT/9oADAMBAAIRAxEAPwD5mAHSPXAASAASAAxIAxiRBWDCSGHgxIsB4MSSFYFEkHgAIAJAAJAAJAAJAAJAAJAAJAGMRB4MPCiw8PDwwpw8VgwxJwYvBihiMGLwYoojArBigRhYvCwRJwlYMAQFUgiACAACQACQACQMHCRhg5CRIchyHIYSw8VIeGKJw8VgwwxOHisGGKJwsXgxRRGFjTCwRRnhY0wsETPCxdhYIEYWLxICSVSoBAAAABIGRxE4cEONE4cgkVISJDkORUjRKQ5DkVI1CnDxWHhhicGLwYYYjBi8GCKIxONMKxQRnYVjSxNggRYnGlibGYGdhWLsTWQikupoCSVUsgABA4cKKhJxUKKjWE4qQoqNY0chyCRUjWNCRUgkVI1hgkPDkOQwlgxWHhhiMGLwsUSMLF4WKCM7CsaWJsZ3AzsTY0qLGdwIsTV1NZ1lFTV1NZ1lKaqlWQkGSSoqJiocRxcTFRrGlRUKKjWNKiomLjWNYcVIUVG8JyHIchxpoYMVhmFGDF4WKJFicaWJsAZ2JrSprOss6mrqaxoZ1NXU1nWUVNVU1nWU1NVSrISAAFQ4UOEqiomLjWHFRcRFxrGlRUTFxvGlRUTFRrGlRUKKbw4cMootEVUVSTU1VTRoTUVdRWdZ1NRV1FY1lNRV1FZ1lNTVVNY1nU1NVU1kERgA4cTFQlUVExUawrioiLjWNLioiKjeNNIqIio1jWLioiVUrRVFajT0k9BaWpCpp2ptGgqmnU1nQVRVVFZ1kqiqqaxrKamnU1nWdTSp1NZBAAA4cSqJKioiKjWNLi4zio1haRURDlaxppKqM5VStYWkqtZynrVaaaNRp6alaNTpaqqq1NpaVoqO1NK0rRugrU07U2sayVTTtTWdZKop0qzoTSp1NZZAIJGcTDSVFREVCVxUrOVUrWFpKqVnKqU0rlVKzlVK1mtVenqNPTTV6es9PTVV6Wp0aqqrS1Olqqp2laWptZFO1NotTaN0CpotKsslSopVkFSFIAAAAABI4qIMlcOVJykrlOVGnK1S0lOVnKrTSvT1np6aWmjUaNVVXo1GjVVVaWp0tVVVpaWlooO1NpWlaKDqaKTICTIAgAAAAkAAkAAkZpMlWnKnRpqXKeo09VK9Gp0aaavRqNPTVVaNTpaqqvS1OjRVT0tLSVB2lpaNABAggAAAAEgAEgMVIqQwxGH+VyLnkwxj+DnhvPKp5jXJ5YT5nzdE8rnk8Hlyz5HPk654ip4jXB5cfE+LtniHPnD5tcOHiOL0OcPlD5rh53H+Di9HlC5xea4efxLi9C/OJviLzXDgvyLk7r4ib4jPA4cXMubsvhN8s8M8uT8F+HTfMTfI5HLn/JY3vlNjPIjHA0sTYIIkHgSOU5UBVNZ6VPTDT/RpronpU9ub9D9no9Oue1T24/2fRrs9O2fRU+kcPQ+p9D2759Dn1cHUdT6Ht6PUdnndT7H0Xb0Owv1/rz+1HVei7d/VN+jh7DqPRdu2/SJv0cfWl0HoO3Xfab7cvQv2Ox06L7TfTD9j9M9DprfSb6Z/otFFXaVqQKKeggEAAgAAkAAkAAkAAkAAUAAiAAkZAICgAIABIABIABIABIABJ//Z" alt=""></p>
-    <h2>Our latest work</h2>    
+    <h2>Our latest work</h2>
     <p>I'm obsessed with Phoenix Games.</p>
     <a href="https://www.youtube.com">Visit Our YouTube Channel</a>
+</div>
+
+<div id="Help" class="tabcontent">
+    <h2>Help</h2>
+    <p>Content for the Help tab goes here.</p>
+</div>
+
+<div id="Address" class="tabcontent">
+    <h2>Address</h2>
+    <p>Content for the Address tab goes here.</p>
+</div>
+
+<div id="FindIssues" class="tabcontent">
+    <h2>Find Issues</h2>
+    <p>Content for the Find Issues tab goes here.</p>
+</div>
+
+<div id="Download" class="tabcontent">
+    <h2>Download</h2>
+    <p>Content for the Download tab goes here.</p>
+</div>
+
+<script>
+    // JavaScript function to open specific tab content
+    function openTab(tabName) {
+        var i;
+        var tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+
 </body>
 </html>
