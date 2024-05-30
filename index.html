@@ -3,16 +3,22 @@
 <head>
     <style>
         /* CSS for tabs */
+        .tab-container {
+            background-color: purple;
+            border-radius: 10px 10px 0 0;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
         .tab {
             overflow: hidden;
-            background-color: #f0f0f0; /* Changed from #333 to match the page background */
+            background-color: #f0f0f0;
             border-radius: 10px;
-            margin-bottom: 20px;
         }
 
         /* Style the buttons inside the tab */
         .tab button {
-            background-color: #005b80; /* Changed to a darker blue */
+            background-color: #005b80; /* Darker blue */
             float: left;
             border: none;
             outline: none;
@@ -47,13 +53,15 @@
 </head>
 <body style="background-color: #f0f0f0;">
 
-<!-- Tab links -->
-<div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'Home')">Home</button>
-    <button class="tablinks" onclick="openTab(event, 'Information')">Information</button>
-    <button class="tablinks" onclick="openTab(event, 'Address An Issue')">Address An Issue</button>
-    <button class="tablinks" onclick="openTab(event, 'Code')">Code</button>
-    <button class="tablinks" onclick="openTab(event, 'Download')">Download</button>
+<!-- Purple box container for tabs -->
+<div class="tab-container">
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'Home')">Home</button>
+        <button class="tablinks" onclick="openTab(event, 'Information')">Information</button>
+        <button class="tablinks" onclick="openTab(event, 'Address An Issue')">Address An Issue</button>
+        <button class="tablinks" onclick="openTab(event, 'Code')">Code</button>
+        <button class="tablinks" onclick="openTab(event, 'Download')">Download</button>
+    </div>
 </div>
 
 <!-- Tab content -->
